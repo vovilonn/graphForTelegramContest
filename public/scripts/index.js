@@ -17,6 +17,14 @@ const graph = [
     { x: 990, y: 320 },
 ];
 
+const render = (dots) => {
+    ctx.moveTo(0, canvas.height);
+    dots.forEach((e) => {
+        ctx.lineTo(e.x, e.y);
+    });
+    ctx.stroke();
+};
+
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
@@ -26,10 +34,13 @@ ctx.strokeStyle = "red";
 graphRange.min = 0;
 graphRange.max = graph[graph.length - 1].x;
 
-ctx.moveTo(0, 0);
+graphRange.addEventListener("input", ({ target }) => {
+    graph.forEach((e) => {
+        console.log(e.x);
+        e.x--;
+    });
 
-graph.forEach((e) => {
-    ctx.lineTo(e.x, e.y);
+    render(graph);
 });
 
-ctx.stroke();
+render(graph);

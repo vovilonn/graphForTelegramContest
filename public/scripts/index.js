@@ -1,17 +1,35 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const graphRange = document.getElementById("graphRange");
 
-ctx.lineWidth = 3;
+const graph = [
+    { x: 100, y: 320 },
+    { x: 130, y: 100 },
+    { x: 140, y: 110 },
+    { x: 300, y: 10 },
+    { x: 500, y: 380 },
+    { x: 720, y: 320 },
+    { x: 750, y: 320 },
+    { x: 830, y: 100 },
+    { x: 840, y: 110 },
+    { x: 900, y: 10 },
+    { x: 930, y: 380 },
+    { x: 990, y: 320 },
+];
 
-ctx.width = 40;
-ctx.style.width = "400px";
-ctx.height = 40;
-ctx.style.height = "400px";
+canvas.width = canvas.clientWidth;
+canvas.height = canvas.clientHeight;
 
-ctx.moveTo(0, canvas.innerHeight);
-ctx.lineTo(100, 20);
-ctx.lineTo(150, 60);
-ctx.lineTo(170, 10);
-ctx.lineTo(180, 100);
-ctx.lineTo(210, 20);
+ctx.lineWidth = 5;
+ctx.strokeStyle = "red";
+
+graphRange.min = 0;
+graphRange.max = graph[graph.length - 1].x;
+
+ctx.moveTo(0, 0);
+
+graph.forEach((e) => {
+    ctx.lineTo(e.x, e.y);
+});
+
 ctx.stroke();

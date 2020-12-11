@@ -31,16 +31,4 @@ canvas.height = canvas.clientHeight;
 ctx.lineWidth = 5;
 ctx.strokeStyle = "red";
 
-graphRange.min = 0;
-graphRange.max = graph[graph.length - 1].x;
-
-graphRange.addEventListener("input", ({ target }) => {
-    graph.forEach((e) => {
-        console.log(e.x);
-        e.x--;
-    });
-
-    render(graph);
-});
-
 render(graph);

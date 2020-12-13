@@ -3,7 +3,7 @@ import Slider from "./slider.js";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const { initialize } = new Slider();
+const { initialize, render } = new Slider();
 
 const graph = [
     { x: 100, y: 320 },
@@ -20,7 +20,7 @@ const graph = [
     { x: 990, y: 320 },
 ];
 
-const render = (dots) => {
+const renderGraph = (dots) => {
     ctx.moveTo(0, canvas.height);
     dots.forEach((e) => {
         ctx.lineTo(e.x, e.y);
@@ -34,5 +34,6 @@ canvas.height = canvas.clientHeight;
 ctx.lineWidth = 5;
 ctx.strokeStyle = "red";
 
-render(graph);
+renderGraph(graph);
 initialize();
+render();

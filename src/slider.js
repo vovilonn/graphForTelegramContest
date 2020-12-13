@@ -1,12 +1,10 @@
 import noUiSlider from "nouislider";
 
-export default class Slider {
-    constructor() {
-        this.slider = document.getElementById("slider");
-    }
+function Slider() {
+    this.initialized = false;
 
-    initialize() {
-        noUiSlider.create(this.slider, {
+    this.initialize = () => {
+        noUiSlider.create(document.getElementById("slider"), {
             start: [20, 80],
             connect: true,
             range: {
@@ -14,18 +12,26 @@ export default class Slider {
                 max: 100,
             },
         });
-        this.initialized = true;
-    }
 
-    render() {
+        const sliderBase = document.querySelector(".noUi-base");
+        this.canvas = document.createElement("canvas");
+        this.canvas.classList.add("noUi-BaseGraphRender");
+        sliderBase.insertAdjacentElement("afterbegin", this.canvas);
+        this.canvas.style.width = sliderBase.clientWidth + "px";
+        this.canvas.style.height = sliderBase.clientHeight + "px";
+        this.canvas.width = this.canvas.style.width;
+        this.canvas.height = this.canvas.style.height;
+
+        this.ctx = canvas.getContext("2d");
+
+        this.initialized = true;
+    };
+
+    this.render = () => {
         if (!this.initialized) {
             this.initialize();
         }
-
-        this.sliderBase = document.querySelector(".noUi-base");
-        this.canvas = document
-            .createElement("canvas")
-            .classList.add("sliderBaseGraphRender");
-        this.sliderBase.insertAdjacentHTML("afterbegin", this.canvas);
-    }
+    };
 }
+
+export default Slider;

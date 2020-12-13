@@ -63,6 +63,8 @@ body {
         opacity: 0.2;
     }
 
-
-
+    &-BaseGraphRender {
+        position: absolute;
+        z-index: 999;
+    }
 }

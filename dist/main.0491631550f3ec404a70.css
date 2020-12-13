@@ -385,3 +385,7 @@ body {
   background-color: #85caff;
   opacity: 0.2;
 }
+
+.noUi-BaseGraphRender {
+  position: absolute;
+}

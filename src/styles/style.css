@@ -72,4 +72,9 @@ body {
   background-color: #85caff;
   opacity: 0.2;
 }
+
+.noUi-BaseGraphRender {
+  position: absolute;
+  z-index: 999;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,7 @@
+@import "./slider.css";
+
+$dark: #191919;
+
 *,
 *:before,
 *:after {
@@ -7,7 +11,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: #191919;
+    background: $dark;
 }
 
 .container {
@@ -38,6 +42,27 @@ body {
     height: 100%;
 }
 
-.graphRange {
-    width: 720px;
+.rangeInput {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.noUi {
+    &-target {
+        width: 100%;
+        height: 50px;
+    }
+
+    &-handle {
+        width: 3px;
+        height: 100%;
+    }
+
+    &-connect {
+        background-color: #85caff;
+        opacity: 0.2;
+    }
+
+
+
 }

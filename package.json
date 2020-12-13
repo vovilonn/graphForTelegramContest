@@ -1,34 +1,33 @@
 {
-  "name": "canvas-graph",
+  "name": "graph-telegram-contest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "dev": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
+    "watch": "npx webpack --mode development -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vovilonn/canvasGraph.git"
+    "url": "git+https://github.com/vovilonn/graphForTelegramContest.git"
   },
-  "author": "vovilonn vovadesign0792@gmail.com",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vovilonn/canvasGraph/issues"
+    "url": "https://github.com/vovilonn/graphForTelegramContest/issues"
   },
-  "homepage": "https://github.com/vovilonn/canvasGraph#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "nouislider": "^14.6.3",
-    "redux": "^4.0.5"
-  },
+  "homepage": "https://github.com/vovilonn/graphForTelegramContest#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.10"
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "nouislider": "^14.6.3"
   }
-  
 }

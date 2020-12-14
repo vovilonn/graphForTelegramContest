@@ -1,9 +1,10 @@
 import "@/styles/style.css";
-import Slider from "./slider.js";
+import Slider from "./slider";
+import Graph from "./graph";
 
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("canvasGraph");
 const ctx = canvas.getContext("2d");
-const { initialize, render } = new Slider();
+const slider = new Slider();
 
 const graph = [
     { x: 100, y: 320 },
@@ -35,5 +36,5 @@ ctx.lineWidth = 5;
 ctx.strokeStyle = "red";
 
 renderGraph(graph);
-initialize();
-render();
+slider.initialize();
+slider.render(graph);

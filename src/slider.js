@@ -4,8 +4,12 @@ function Slider() {
     this.initialized = false;
 
     this.initialize = () => {
+        //initializing slider
+
         noUiSlider.create(document.getElementById("slider"), {
-            start: [20, 80],
+            start: [10, 120],
+            margin: 10,
+            behaviour: "drag",
             connect: true,
             range: {
                 min: 0,
@@ -13,16 +17,18 @@ function Slider() {
             },
         });
 
-        const sliderBase = document.querySelector(".noUi-base");
-        this.canvas = document.createElement("canvas");
-        this.canvas.classList.add("noUi-BaseGraphRender");
-        sliderBase.insertAdjacentElement("afterbegin", this.canvas);
-        this.canvas.style.width = sliderBase.clientWidth + "px";
-        this.canvas.style.height = sliderBase.clientHeight + "px";
-        this.canvas.width = this.canvas.style.width;
-        this.canvas.height = this.canvas.style.height;
+        //canvas setting and styles
 
-        this.ctx = canvas.getContext("2d");
+        const sliderBase = document.querySelector(".noUi-base");
+        this.canvas = document.getElementById("canvasSlider");
+        this.ctx = this.canvas.getContext("2d");
+
+        this.canvas.style.width = sliderBase.clientWidth + "px"; // adding styles
+        this.canvas.style.height = sliderBase.clientHeight + "px";
+        this.canvas.width = sliderBase.clientWidth;
+        this.canvas.height = sliderBase.clientHeight;
+
+        //another styles
 
         this.initialized = true;
     };
@@ -31,6 +37,22 @@ function Slider() {
         if (!this.initialized) {
             this.initialize();
         }
+
+        const dots = [
+            { x: 10, y: 2 },
+            { x: 100, y: 6 },
+            { x: 191, y: 20 },
+            { x: 242, y: 11 },
+            { x: 260, y: 2 },
+        ];
+
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeStyle = "red";
+        this.ctx.moveTo(0, this.canvas.height);
+        dots.forEach((e) => {
+            this.ctx.lineTo(e.x, e.y);
+        });
+        this.ctx.stroke();
     };
 }
 

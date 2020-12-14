@@ -28,6 +28,7 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "nouislider": "^14.6.3"
   }
 }

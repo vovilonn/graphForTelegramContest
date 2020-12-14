@@ -20,6 +20,7 @@ module.exports = {
         },
     },
     resolve: {
+        extensions: [".js", ".json"],
         alias: {
             "@": path.resolve(__dirname, "src"),
         },
@@ -37,7 +38,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css/i,
+                test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
         ],

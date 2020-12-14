@@ -19,35 +19,51 @@ function Slider() {
 
         //canvas setting and styles
 
-        const sliderBase = document.querySelector(".noUi-base");
+        this.sliderBase = document.querySelector(".noUi-base");
         this.canvas = document.getElementById("canvasSlider");
         this.ctx = this.canvas.getContext("2d");
 
-        this.canvas.style.width = sliderBase.clientWidth + "px"; // adding styles
-        this.canvas.style.height = sliderBase.clientHeight + "px";
-        this.canvas.width = sliderBase.clientWidth;
-        this.canvas.height = sliderBase.clientHeight;
+        this.canvas.style.width = this.sliderBase.clientWidth + "px"; // adding styles
+        this.canvas.style.height = this.sliderBase.clientHeight + "px";
+        this.canvas.width = this.sliderBase.clientWidth;
+        this.canvas.height = this.sliderBase.clientHeight;
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeStyle = "red";
 
         //another styles
 
         this.initialized = true;
     };
 
-    this.render = () => {
-        if (!this.initialized) {
-            this.initialize();
-        }
+    this.render = (innerDots) => {
+        // if (!this.initialized) {
+        //     this.initialize();
+        // }
 
-        const dots = [
-            { x: 10, y: 2 },
-            { x: 100, y: 6 },
-            { x: 191, y: 20 },
-            { x: 242, y: 11 },
-            { x: 260, y: 2 },
-        ];
+        const maxY;
+        const percentDots = innerDots.map((coords) => {
+            innerDots.forEach((e, i) => {
+                if (i !== 0 && e.y > innerDots[i - 1].y) {
+                    this.maxY = e.y;
+                }
+            });
+            return {
+                x: (coords.x / innerDots[innerDots.length - 1].x) * 100,
+                y: (coords.y / maxY) * 100,
+            };
+        });
+        const xUnit =
+            this.sliderBase.clientWidth / innerDots[innerDots.length - 1].x;
+        const yUnit = this.sliderBase.clientHeight / maxY;
 
-        this.ctx.lineWidth = 2;
-        this.ctx.strokeStyle = "red";
+        // render
+
+        const dots = percentDots.map((coords) => ({
+            x: coords.x * xUnit,
+            y: coords.y * yUnit,
+        }));
+        console.log("🚀 ~ file: slider.js ~ line 65 ~ dots ~ dots", dots);
+
         this.ctx.moveTo(0, this.canvas.height);
         dots.forEach((e) => {
             this.ctx.lineTo(e.x, e.y);
